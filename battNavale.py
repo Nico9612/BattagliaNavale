@@ -2,6 +2,7 @@ from random import randint
 
 #area=int(input("Inserire la dimensione della griglia: "))
 area=10
+
 def campo(area):
     griglia=[]
     for i in range(0,area):
@@ -18,28 +19,31 @@ def nave(matrice,lenNave):
     j=randint(0, (len(matrice)-lenNave))
     try:
         if (i  == 0 or j == 0) and not (i==len(matrice) or j==len(matrice) ):
-            if not matrice[i][j] == 1: #or not matrice[i+1][j] == 1 or not matrice[i][j+1] == 1:
-                if r == 0:     
-                #nave orizzontale
-                    matrice[i][j]=1
-                    matrice[i][j+1]=1
-                #nave verticale
-                else:
-                    matrice[i][j]=1
-                    matrice[i+1][j]=1
-        else:
-
-            if not matrice[i][j] == 1 or not matrice[i+1][j] == 1 or not matrice[i][j+1] == 1 or not matrice[i-1][j] == 1 or not  matrice[i][j-1] == 1:
-
-                if r == 0:     
-                #nave orizzontale
-                    matrice[i][j]=1
-                    matrice[i][j+1]=1
-                #nave verticale
-                else:
-                    matrice[i][j]=1
-                    matrice[i+1][j]=1      
+            if  matrice[i][j] != 1: #or not matrice[i+1][j] == 1 or not matrice[i][j+1] == 1: 
                 
+                if r == 0:     
+                #nave orizzontale
+                    for k in range(0,lenNave):
+                        matrice[i][j+k]=1
+                    #matrice[i][j+1]=1
+                #nave verticale
+                else:
+                    for k in range(0,lenNave):
+                        matrice[i+k][j]=1
+                    #matrice[i+1][j]=1
+        else:
+    
+            if matrice[i][j] != 1 or matrice[i+1][j] != 1 or matrice[i][j+1] != 1 or matrice[i-1][j] != 1 or matrice[i][j-1] != 1:
+
+                if r == 0:     
+                #nave orizzontale
+                    for k in range(0,lenNave):
+                        matrice[i][j+k]=1
+                #nave verticale
+                else:
+                    for k in range(0,lenNave):
+                        matrice[i+k][j]=1     
+            
     except:
         nave(matrice, lenNave)
     
@@ -48,9 +52,11 @@ def nave(matrice,lenNave):
 
 
 if __name__=="__main__":
-    z=campo(area)
-    nave(z, 2)
-    nave(z, 2)
-    nave(z, 2)
-
-    print(nave(z,2))
+    mappa=campo(10)
+    
+    mappa.nave(z, 2)
+    mappa.nave(z, 3)
+    mappa.nave(z, 5)
+    
+for r in z:
+    print(r)
