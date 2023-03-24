@@ -52,11 +52,11 @@ def nave(matrice,lenNave):
 
 
 if __name__=="__main__":
-    mappa=campo(10)
+    z=mappa=campo(10)
     
-    mappa.nave(z, 2)
-    mappa.nave(z, 3)
-    mappa.nave(z, 5)
+    z=mappa.nave(z, 2)
+    z=mappa.nave(z, 3)
+    z=mappa.nave(z, 5)
     
 for r in z:
     print(r)
