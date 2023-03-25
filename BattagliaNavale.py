@@ -28,18 +28,26 @@ class Mappa:
             for s in range(nave.lenNave):
                 
                 if verso==0:
-                    if j+s >= self.intervallo or self.mappa[i][j+s] != '-':
+                    if j+s >= self.intervallo or self.mappa[i][j+s] != "-":
                         sovrapposte = True
                         break
                     
-                   
-                        
-                else:
-                    if i+s >= self.intervallo or self.mappa[i+s][j] != '-':
+                    if i>0 and self.mappa[i-1][j+s] != "-":
                         sovrapposte = True
                         break
-
-           
+                    if i< self.intervallo-1 and self.mappa[i+1][j+s] != "-":
+                        sovrapposte = True
+                        break
+                else:
+                    if i+s >= self.intervallo or self.mappa[i+s][j] != "-":
+                        sovrapposte = True
+                        break
+                    if j > 0 and self.mappa[i+s][j-1] != "-":
+                        sovrapposte = True
+                        break
+                    if j < self.intervallo-1 and self.mappa[i+s][j+1] != "-":
+                        sovrapposte = True
+                        break
             #se non sono sovrapposte le inserisco nella mappa
             if not sovrapposte:
 
@@ -63,6 +71,7 @@ class Mappa:
             self.mappa[self.y][self.x]="M"
             print("Mancato =( ")
         else:
+            self.mappa[self.y][self.x]="X"
             print("Colpita!!")
     
     #controllo se ci sono ancora pezzi di nave altrimenti stampo hai perso
@@ -87,24 +96,7 @@ class Mappa:
 
         for riga in self.mappa:
             
-            for elemento in riga:
-                #stampo 0 per il mare
-   
-                if elemento == "-":
-                    sys.stdout.write("-"+" ")
-                #stampo 1 per le navi
-                
-                elif elemento == "N":
-                    sys.stdout.write("N"+" ")
-                #stampo M per il colpo mancato
-                
-                elif elemento == "M":
-                    sys.stdout.write("M"+" ")
-                else:
-                    sys.stdout.write("X"+" ")
-
-
-            sys.stdout.write("\n")
+            print(" ".join(riga))
        
 
 
