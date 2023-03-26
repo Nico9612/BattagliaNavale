@@ -74,10 +74,10 @@ class Mappa:
         self.y=y-1
         
         if self.mappa[self.y][self.x] == "🌊":
-            self.mappa[self.y][self.x]="❎"
+            self.mappa[self.y][self.x]="❌"
             print("Mancato =( ")
         else:
-            self.mappa[self.y][self.x]="❌"
+            self.mappa[self.y][self.x]="❎"
             print("Colpita!!")
     
 
