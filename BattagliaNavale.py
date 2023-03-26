@@ -14,7 +14,7 @@ class Mappa:
     #creo la mappa vuota
     def __init__(self,intervallo):
         self.intervallo=intervallo
-        self.mappa = [ ["-" for i in range(self.intervallo)]  for i in range(self.intervallo)]
+        self.mappa = [ ["≋" for i in range(self.intervallo)]  for i in range(self.intervallo)]
 
 
     #metodo per inserire una nave
@@ -34,24 +34,24 @@ class Mappa:
                 for s in range(nave.lenNave):
                     
                     if verso==0:
-                        if j+s >= self.intervallo or self.mappa[i][j+s] != "-":
+                        if j+s >= self.intervallo or self.mappa[i][j+s] != "≋":
                             sovrapposte = True
                             break
                         
-                        if i>0 and self.mappa[i-1][j+s] != "-":
+                        if i>0 and self.mappa[i-1][j+s] != "≋":
                             sovrapposte = True
                             break
-                        if i< self.intervallo-1 and self.mappa[i+1][j+s] != "-":
+                        if i< self.intervallo-1 and self.mappa[i+1][j+s] != "≋":
                             sovrapposte = True
                             break
                     else:
-                        if i+s >= self.intervallo or self.mappa[i+s][j] != "-":
+                        if i+s >= self.intervallo or self.mappa[i+s][j] != "≋":
                             sovrapposte = True
                             break
-                        if j > 0 and self.mappa[i+s][j-1] != "-":
+                        if j > 0 and self.mappa[i+s][j-1] != "≋":
                             sovrapposte = True
                             break
-                        if j < self.intervallo-1 and self.mappa[i+s][j+1] != "-":
+                        if j < self.intervallo-1 and self.mappa[i+s][j+1] != "≋":
                             sovrapposte = True
                             break
                 #se non sono sovrapposte le inserisco nella mappa
@@ -73,7 +73,7 @@ class Mappa:
         self.x=x-1
         self.y=y-1
         
-        if self.mappa[self.y][self.x] == "-":
+        if self.mappa[self.y][self.x] == "≋":
             self.mappa[self.y][self.x]="M"
             print("Mancato =( ")
         else:
